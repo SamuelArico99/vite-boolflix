@@ -1,18 +1,13 @@
 <script>
-import { store } from "../store";
-import AppCard from "./AppCard.vue";
 export default {
-    name: ' AppMain',
-    data() {
-        return {
-            store
-        };
+    name: 'AppCard',
+    props: {
+        movie: Object
     },
-    components: {
-        AppCard
-    },
-    methods: {
-        flag(lang) {
+    computed: {
+
+        flag() {
+            let lang = this.movie.original_language;
             if (lang == 'en') {
                 lang = 'uk'
             }
@@ -26,19 +21,27 @@ export default {
             return flag;
         }
     }
-};
+}
 </script>
 
 <template>
-    <main>
-        <h1>Film</h1>
 
-        <AppCard v-for="movie in store.movies" :movie=movie />
+    <div>
+        <h2>
+            {{ movie.title }}
+        </h2>
+        <h4>
+            {{ movie.original_title }}
+        </h4>
+        <p>
+            {{ movie.original_language }}
+        </p>
+        <img :src="flag" alt="">
+        <p>
+            {{ movie.vote_average }}
+        </p>
+    </div>
 
-        <h1>Serie tv</h1>
-
-        <AppCard v-for="serie in store.series" :movie=serie />
-    </main>
 </template>
 
 <style scoped>
