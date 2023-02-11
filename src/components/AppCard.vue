@@ -2,12 +2,12 @@
 export default {
     name: 'AppCard',
     props: {
-        movie: Object
+        element: Object
     },
     computed: {
 
         flag() {
-            let lang = this.movie.original_language;
+            let lang = this.element.original_language;
             if (lang == 'en') {
                 lang = 'uk'
             }
@@ -27,18 +27,24 @@ export default {
 <template>
 
     <div>
-        <h2>
-            {{ movie.title }}
-        </h2>
-        <h4>
-            {{ movie.original_title }}
+        <h3 v-if="element.title">
+            {{ element.title }}
+        </h3>
+        <h3 v-else-if="element.name">
+            {{ element.name }}
+        </h3>
+        <h4 v-if="element.original_title">
+            {{ element.original_title }}
+        </h4>
+        <h4 v-else-if="element.original_name">
+            {{ element.original_name }}
         </h4>
         <p>
-            {{ movie.original_language }}
+            {{ element.original_language }}
         </p>
         <img :src="flag" alt="">
         <p>
-            {{ movie.vote_average }}
+            {{ element.vote_average }}
         </p>
     </div>
 

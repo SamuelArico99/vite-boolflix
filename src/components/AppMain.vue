@@ -33,11 +33,11 @@ export default {
     <main>
         <h1>Film</h1>
 
-        <AppCard v-for="movie in store.movies" :movie=movie />
+        <AppCard v-for="movie in store.movies" :element=movie />
 
         <h1>Serie tv</h1>
 
-        <AppCard v-for="serie in store.series" :movie=serie />
+        <AppCard v-for="serie in store.series" :element=serie />
     </main>
 </template>
 
