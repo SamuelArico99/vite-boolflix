@@ -26,6 +26,10 @@ export default {
     </header>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+header {
+    height: 80px;
+    background-color: black;
 
+}
 </style>

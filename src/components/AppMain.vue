@@ -12,19 +12,7 @@ export default {
         AppCard
     },
     methods: {
-        flag(lang) {
-            if (lang == 'en') {
-                lang = 'uk'
-            }
-            else if (lang == 'pt') {
-                lang = 'po'
-            }
-            else if (lang == 'es') {
-                lang = 'sp'
-            }
-            const flag = ` https://www.worldometers.info//img/flags/small/tn_${lang}-flag.gif`;
-            return flag;
-        }
+
     }
 };
 </script>
