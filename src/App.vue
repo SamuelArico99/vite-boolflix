@@ -57,6 +57,6 @@ export default {
 
 </template>
 
-<style scoped>
-
+<style lang="scss">
+@use "./styles/main.scss"
 </style>

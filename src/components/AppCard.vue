@@ -46,34 +46,90 @@ export default {
 
 <template>
 
-    <div>
+    <div class="element-card">
 
-        <img :src="getCover()" alt="">
-        <h3 v-if="element.title">
-            {{ element.title }}
-        </h3>
-        <h3 v-else-if="element.name">
-            {{ element.name }}
-        </h3>
-        <h4 v-if="element.original_title">
-            {{ element.original_title }}
-        </h4>
-        <h4 v-else-if="element.original_name">
-            {{ element.original_name }}
-        </h4>
-        <p>
-            {{ element.original_language }}
-        </p>
-        <img :src="flag" alt="">
-        <div>
+        <div class="front">
+            <img :src="getCover()" alt="">
+        </div>
+        <div class="back">
+            <h3 v-if="element.title">
+                {{ element.title }}
+            </h3>
+            <h3 v-else-if="element.name">
+                {{ element.name }}
+            </h3>
+            <h4 v-if="element.original_title">
+                Titolo originale: {{ element.original_title }}
+            </h4>
+            <h4 v-else-if="element.original_name">
+                {{ element.original_name }}
+            </h4>
+            <p>
+                Lingua originale: {{ element.original_language }}
+            </p>
+            <img :src="flag" alt="">
+            <div>
 
-            <span v-for="n in getVote()">★</span>
-            <span v-for="n in (5 - getVote())">☆</span>
+                <span v-for="n in getVote()">★</span>
+                <span v-for="n in (5 - getVote())">☆</span>
+            </div>
+            <p>
+                {{ element.overview }}
+            </p>
         </div>
     </div>
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.element-card {
+    position: relative;
+    width: 20%;
 
+    .front,
+    .back {
+        width: 100%;
+        height: 100%;
+    }
+
+    .back {
+        width: 100%;
+        height: 100%;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        text-align: center;
+        padding: 30px;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        h3,
+        h4,
+        div,
+        p {
+            margin: 30px 0;
+        }
+    }
+
+    .front {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .back {
+        display: none;
+    }
+
+    &:hover {
+        .back {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+}
 </style>
